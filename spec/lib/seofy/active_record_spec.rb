@@ -27,11 +27,24 @@ describe Seofy::ActiveRecord  do
         end
       end
 
-      describe "for_slug" do 
+      describe "for_seofy" do 
         it "should get slug from id and find record use it" do 
           @klass.should_receive(:seofy_adapter).and_return double(:column => "id") 
           @klass.should_receive("find_by_id").with("123")
           @klass.for_seofy("a-b-c-123")
+        end
+      end
+
+      describe "for_seofy_with_short_url" do 
+        it "should use for_seofy if contain '-'" do 
+          @klass.should_receive("for_seofy").with("a-b-c-123")
+          @klass.for_seofy_with_short_url("a-b-c-123")
+        end
+
+        it "should find record use slug column if doesn't contain '-'" do 
+          @klass.should_receive(:seofy_adapter).and_return double(:column => "id") 
+          @klass.should_receive("find_by_id").with("123")
+          @klass.for_seofy_with_short_url("123")
         end
       end
     end

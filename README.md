@@ -30,7 +30,13 @@ Usage
       seofy :source => :title, :adapter => :base36, :adapter_option => {:length => 3, :column => :slug }
     end
 
-    User.for_seofy("SLUG")
+    User.for_seofy("a-name-slug")
+
+`for_seofy_with_short_url` will support get record only use slug
+
+    User.for_seofy_with_short_url("slug")
+    User.for_seofy_with_short_url("a-name-slug")
+
 
 and we won't override `to_param` method, we create new one `seofy_param` 
 

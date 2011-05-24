@@ -20,6 +20,14 @@ module Seofy
       def for_seofy(param) 
         self.send("find_by_#{seofy_adapter.column}", param.split("-").last)
       end
+
+      def for_seofy_with_short_url(param) 
+        if param.to_s.include?("-") 
+          for_seofy(param)
+        else 
+          self.send("find_by_#{seofy_adapter.column}", param)
+        end
+      end
     end
 
     module InstanceMethods 
