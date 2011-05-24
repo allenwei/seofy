@@ -12,6 +12,7 @@ describe Seofy::Adapters::Base36 do
         stub = Object.new 
         ::Seofy::Encoders::Base36.should_receive(:random).with(3).and_return("abc")
         stub.should_receive("slug=").with("abc")
+        stub.class.should_receive(:exists?).with(['slug = ?', "abc"]).and_return(false)
         adapter.set_seofy_slug(stub)
       end
     end
