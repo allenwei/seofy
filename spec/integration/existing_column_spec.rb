@@ -7,13 +7,13 @@ describe "slug for existing_column", :integration => true do
 
   describe "to_param" do 
     it "should equal to combined slugs" do 
-      @user.to_param.should == "a-user-name-slug"
+      @user.seofy_param.should == "a-user-name-slug"
     end
   end
 
   describe "for_slug" do 
     it "should find the record" do 
-      User.for_seofy(@user.to_param).should == @user
+      User.for_seofy(@user.seofy_param).should == @user
     end
   end
 end

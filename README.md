@@ -32,6 +32,11 @@ Usage
 
     User.for_seofy("SLUG")
 
+and we won't override `to_param` method, we create new one `seofy_param` 
+
+   user = User.create(:name => "I am allen", :slug => "abc") 
+   user.seofy_param #=>  "i-am-allen-abc"
+
 
 Rake task 
 -------- 

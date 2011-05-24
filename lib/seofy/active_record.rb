@@ -23,7 +23,7 @@ module Seofy
     end
 
     module InstanceMethods 
-      def to_param
+      def seofy_param
         [seofy_source.to_s, seofy_slug].join("-").to_slug.normalize.to_s
       end
 

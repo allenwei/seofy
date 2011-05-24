@@ -38,7 +38,7 @@ describe Seofy::ActiveRecord  do
 
     context "instance methods" do 
       subject {@klass.new } 
-      it { should be_respond_to(:to_param)}
+      it { should be_respond_to(:seofy_param)}
       it { should be_respond_to(:seofy_slug)}
       it { should be_respond_to(:seofy_source)}
     end
@@ -60,12 +60,12 @@ describe Seofy::ActiveRecord  do
       end
     end
 
-    describe "#to_param" do 
+    describe "#seofy_param" do 
       it "should normalize source and join with slug" do 
         inst = @klass.new 
         inst.should_receive(:seofy_slug).and_return("abc")
         inst.should_receive(:seofy_source).and_return("a normalize name")
-        inst.to_param.should == "a-normalize-name-abc"
+        inst.seofy_param.should == "a-normalize-name-abc"
       end
     end
 
