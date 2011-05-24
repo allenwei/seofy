@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    seofy (0.0.1)
+    seofy (0.0.2)
       activerecord (~> 3.0.0)
       activesupport (~> 3.0.0)
       babosa (~> 0.3.0)
