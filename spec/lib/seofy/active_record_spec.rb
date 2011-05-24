@@ -11,8 +11,8 @@ describe Seofy::ActiveRecord  do
       @klass = Class.new 
       @klass.extend Seofy::ActiveRecord::ClassMethods
       @klass.should_receive(:init_seofy_config)
-      @klass.should_receive(:after_save)
-      @klass.should_receive(:before_save)
+      @klass.should_receive(:after_create)
+      @klass.should_receive(:before_create)
       @klass.seofy
     end
 
@@ -71,10 +71,10 @@ describe Seofy::ActiveRecord  do
 
     it "should ask adapter handle callback" do 
       inst = @klass.new 
-      @klass.should_receive(:seofy_adapter).and_return double(:before_save => true)
-      @klass.should_receive(:seofy_adapter).and_return double(:after_save => true)
-      inst.seofy_before_save
-      inst.seofy_after_save
+      @klass.should_receive(:seofy_adapter).and_return double(:before_create => true)
+      @klass.should_receive(:seofy_adapter).and_return double(:after_create => true)
+      inst.seofy_before_create
+      inst.seofy_after_create
     end
   end
 end

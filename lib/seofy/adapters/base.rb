@@ -15,11 +15,11 @@ module Seofy
         raise "not implement"
       end
       
-      def before_save(inst)
+      def before_create(inst)
         set_seofy_slug(inst)
       end
 
-      def after_save(inst)
+      def after_create(inst)
         # do nothing
       end
     end

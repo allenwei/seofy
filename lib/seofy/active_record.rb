@@ -4,8 +4,8 @@ module Seofy
       def seofy(options={})
         init_seofy_config(options)
         include ::Seofy::ActiveRecord::InstanceMethods
-        before_save :seofy_before_save
-        after_save :seofy_after_save
+        before_create :seofy_before_create
+        after_create :seofy_after_create
       end
 
       def init_seofy_config(options={})
@@ -35,12 +35,12 @@ module Seofy
         self.send(self.class.seofy_config.source).to_s
       end
 
-      def seofy_before_save
-        self.class.seofy_adapter.before_save(self)
+      def seofy_before_create
+        self.class.seofy_adapter.before_create(self)
       end
 
-      def seofy_after_save
-        self.class.seofy_adapter.after_save(self)
+      def seofy_after_create
+        self.class.seofy_adapter.after_create(self)
       end
 
     end
