@@ -5,6 +5,7 @@ A simple plugin make permalink for you records.
 
 Note: only supprt Rails 3
 
+![travis-ci](http://travis-ci.org/allenwei/seofy.png)
 
 Installation
 ----- 
