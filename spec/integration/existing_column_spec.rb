@@ -13,7 +13,7 @@ describe "slug for existing_column", :integration => true do
 
   describe "for_slug" do 
     it "should find the record" do 
-      User.for_slug(@user.to_param).should == @user
+      User.for_seofy(@user.to_param).should == @user
     end
   end
 end

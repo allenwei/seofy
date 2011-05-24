@@ -11,7 +11,7 @@ describe "slug use base36", :integration => true do
 
   describe "for_slug" do 
     it "should find the record" do 
-      Store.for_slug(@store.to_param).should == @store
+      Store.for_seofy(@store.to_param).should == @store
     end
   end
 

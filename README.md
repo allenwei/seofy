@@ -30,7 +30,7 @@ Usage
       seofy :source => :title, :adapter => :base36, :adapter_option => {:length => 3, :column => :slug }
     end
 
-    User.for_slug("SLUG")
+    User.for_seofy("SLUG")
 
 
 Rake task 

@@ -17,7 +17,7 @@ module Seofy
         self.seofy_config.adapter
       end
 
-      def for_slug(param) 
+      def for_seofy(param) 
         self.send("find_by_#{seofy_adapter.column}", param.split("-").last)
       end
     end

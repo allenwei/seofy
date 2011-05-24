@@ -31,7 +31,7 @@ describe Seofy::ActiveRecord  do
         it "should get slug from id and find record use it" do 
           @klass.should_receive(:seofy_adapter).and_return double(:column => "id") 
           @klass.should_receive("find_by_id").with("123")
-          @klass.for_slug("a-b-c-123")
+          @klass.for_seofy("a-b-c-123")
         end
       end
     end
