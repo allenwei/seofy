@@ -2,6 +2,12 @@ require 'spec_helper'
 
 describe Seofy::TaskRunner do 
 
+  it "should raise exception if no env MODELS" do 
+    lambda {
+      Seofy::TaskRunner.new 
+    }.should raise_error
+  end
+
   describe "#update_all" do 
     it "should update all slugs" do
       s1 = Store.create!("store 1")

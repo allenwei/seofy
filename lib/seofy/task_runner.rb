@@ -3,6 +3,7 @@ module Seofy
     attr_reader :klasses
     def initialize 
       @klasses = ENV["MODELS"]
+      raise "Please provide MODELS" if @klasses.empty?
     end
 
     def each_model
