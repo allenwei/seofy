@@ -23,7 +23,7 @@ module Seofy
 
     def update_null
       each_model do |klass|
-        klass.find_each(:conditions => ["#{klass.seofy_adapter.column} is null"]) do |record| 
+        klass.unscoped.find_each(:conditions => ["#{klass.seofy_adapter.column} is null"]) do |record| 
           update(record)
         end
       end
