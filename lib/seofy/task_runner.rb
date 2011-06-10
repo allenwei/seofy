@@ -32,7 +32,7 @@ module Seofy
     def update(record) 
       adapter = record.class.seofy_adapter 
       adapter.set_seofy_slug(record)
-      record.class.update(record.id, adapter.column => adapter.seofy_slug(record))
+      record.class.update_all(["#{adapter.column} = ?", adapter.seofy_slug(record)], ['id = ?', record.id])
     end
   end
 end
