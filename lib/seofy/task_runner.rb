@@ -30,8 +30,9 @@ module Seofy
     end
 
     def update(record) 
-      record.class.seofy_adapter.set_seofy_slug(record)
-      record.save(:validate => false)
+      adapter = record.class.seofy_adapter 
+      adapter.set_seofy_slug(record)
+      record.class.update(record.id, adapter.column => adapter.seofy_slug(record))
     end
   end
 end
