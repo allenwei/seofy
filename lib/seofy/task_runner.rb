@@ -9,13 +9,15 @@ module Seofy
     def each_model
       self.klasses.split(",").each do |class_name| 
         klass = class_name.constantize
-        yield klass if block_given?
+        if klass.seofy_adapter.need_update_slug?
+          yield klass if block_given?
+        end
       end
     end
 
     def update_all
       each_model do |klass|
-        klass.find_each do |record| 
+        klass.find_each(:select => [:id]) do |record| 
           update(record)
         end
       end
@@ -23,7 +25,7 @@ module Seofy
 
     def update_null
       each_model do |klass|
-        klass.unscoped.find_each(:conditions => ["#{klass.seofy_adapter.column} is null"]) do |record| 
+        klass.unscoped.find_each(:select => [:id], :conditions => ["#{klass.seofy_adapter.column} is null"]) do |record| 
           update(record)
         end
       end

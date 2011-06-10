@@ -22,6 +22,11 @@ module Seofy
       def after_create(inst)
         # do nothing
       end
+
+      def need_update_slug?
+        true
+      end
+
     end
   end
 end

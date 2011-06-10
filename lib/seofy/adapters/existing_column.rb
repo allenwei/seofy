@@ -13,6 +13,10 @@ module Seofy
       def set_seofy_slug(inst)
       end
 
+      def need_update_slug?
+        false
+      end
+
     end
   end
 end
