@@ -17,7 +17,7 @@ module Seofy
 
     def update_all
       each_model do |klass|
-        klass.find_each(:select => [:id]) do |record| 
+        klass.unscoped.find_each(:select => [:id]) do |record| 
           update(record)
         end
       end

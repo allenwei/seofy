@@ -8,6 +8,7 @@ class CreateModels < ActiveRecord::Migration
     create_table :stores, :force => true do |t|
       t.string :title
       t.string :slug
+      t.integer :deleted, :default => 0
     end
 
   end
