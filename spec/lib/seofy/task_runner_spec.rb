@@ -17,14 +17,11 @@ describe Seofy::TaskRunner do
       s1.reload.should_not == slug1
     end
     it "should ignore default_scope" do 
-      puts "*" * 100
       s1 = Store.create!(:title => "store 1", :deleted => 1)
       slug1 = s1.slug
       ENV["MODELS"] = "Store" 
       Seofy::TaskRunner.new.update_all
       Store.unscoped.find(s1.id).slug.should_not == slug1
-    
-      puts "*" * 100
     end
   end
 

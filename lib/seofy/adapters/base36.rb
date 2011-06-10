@@ -15,7 +15,7 @@ module Seofy
         slug_exist = true
         while slug_exist
           random = ::Seofy::Encoders::Base36.random(self.length) 
-          if inst.class.exists?(["#{column} = ?", random])
+          if inst.class.unscoped.exists?(["#{column} = ?", random])
             slug_exist = true
           else
             inst.send("#{column}=", random)

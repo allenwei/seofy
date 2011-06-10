@@ -7,16 +7,6 @@ describe Seofy::Adapters::Base36 do
     it { adapter.length.should == 3 }
     it { adapter.column.should == :slug }
 
-    describe "#set_seofy_slug" do 
-      it "should generate random 3 characters" do 
-        stub = Object.new 
-        ::Seofy::Encoders::Base36.should_receive(:random).with(3).and_return("abc")
-        stub.should_receive("slug=").with("abc")
-        stub.class.should_receive(:exists?).with(['slug = ?', "abc"]).and_return(false)
-        adapter.set_seofy_slug(stub)
-      end
-    end
-
     describe "#seofy_slug" do 
       it "should equal to slug column" do 
         stub = Object.new 
